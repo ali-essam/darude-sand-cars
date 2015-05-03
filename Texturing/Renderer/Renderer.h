@@ -17,6 +17,8 @@
 #include "InputManager\InputManager.h"
 
 #include "Skybox\Skybox.h"
+#include "Game\GameObject.h"
+#include "PhysicsEngine\PhysicsWorld.h"
 
 class Renderer
 {
@@ -31,6 +33,11 @@ class Renderer
 	Model jeep;
 
 	Skybox skybox;
+
+	PhysicsWorld physicsWorld;
+
+	GameObject spiderGameObject;
+	GameObject jeepGameObject;
 
 	glm::mat4 spiderModel;
 public:

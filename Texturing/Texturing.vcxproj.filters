@@ -46,6 +46,12 @@
     <Filter Include="Skybox">
       <UniqueIdentifier>{1a8b70c7-55c6-49bb-9e19-683fed763b56}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PhysicsEngine">
+      <UniqueIdentifier>{6fcd5d4e-252c-4ec2-ab93-c193be34a3f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{49bebdea-2833-4cdc-9b9c-b75b10cada35}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application Manager\ApplicationManager.cpp">
@@ -90,6 +96,21 @@
     <ClCompile Include="Skybox\Skybox.cpp">
       <Filter>Skybox</Filter>
     </ClCompile>
+    <ClCompile Include="PhysicsEngine\AABoundingBox.cpp">
+      <Filter>PhysicsEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsEngine\PhysicsObject.cpp">
+      <Filter>PhysicsEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsEngine\PhysicsWorld.cpp">
+      <Filter>PhysicsEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObject.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsEngine\RigidBody.cpp">
+      <Filter>PhysicsEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application Manager\ApplicationManager.h">
@@ -130,6 +151,21 @@
     </ClInclude>
     <ClInclude Include="Skybox\Skybox.h">
       <Filter>Skybox</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsEngine\AABoundingBox.h">
+      <Filter>PhysicsEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsEngine\PhysicsObject.h">
+      <Filter>PhysicsEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsEngine\PhysicsWorld.h">
+      <Filter>PhysicsEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObject.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsEngine\RigidBody.h">
+      <Filter>PhysicsEngine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

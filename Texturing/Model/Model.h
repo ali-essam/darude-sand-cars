@@ -28,6 +28,7 @@ class Model
 	ModelNode* processNode(aiNode* ainode, ModelNode* parent);
 	glm::mat4 aiMat4x4ToglmMat4(aiMatrix4x4 aimat);
 public:
+
 	Model();
 	~Model();
 
@@ -37,6 +38,7 @@ public:
 	void Render(GraphicsDevice* graphicsDevice, glm::mat4 transformationMatrix);
 	void Cleanup();
 
+	std::vector<glm::vec3> GetAllVerticies();
 };
 #endif // Model_h__
 

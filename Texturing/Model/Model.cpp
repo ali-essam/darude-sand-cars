@@ -167,3 +167,17 @@ void Model::Cleanup()
 		delete textures[i];
 	}
 }
+
+
+std::vector<glm::vec3> Model::GetAllVerticies()
+{
+	std::vector<glm::vec3> verts;
+	for (int i = 0; i < meshes.size(); i++)
+	{
+		for (int j = 0; j < meshes[i]->VertexData.size(); j++)
+		{
+			verts.push_back(meshes[i]->VertexData[j]);
+		}
+	}
+	return verts;
+}

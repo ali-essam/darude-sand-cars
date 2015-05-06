@@ -88,8 +88,8 @@
     <ClCompile Include="FPCamera\FPCamera.cpp" />
     <ClCompile Include="Game\CarGameObject.cpp" />
     <ClCompile Include="Game\GenericGameObject.cpp" />
-    <ClCompile Include="GraphicsDevice\GraphicsDevice.cpp" />
     <ClCompile Include="InputManager\InputManager.cpp" />
+    <ClCompile Include="Lighting\DirectionalLightSource.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model\Model.cpp" />
     <ClCompile Include="Model\ModelMesh.cpp" />
@@ -100,6 +100,10 @@
     <ClCompile Include="PhysicsEngine\PhysicsWorld.cpp" />
     <ClCompile Include="PhysicsEngine\RigidBody.cpp" />
     <ClCompile Include="Renderer\Renderer.cpp" />
+    <ClCompile Include="ShaderProgram\LightingModelShaderProgram.cpp" />
+    <ClCompile Include="ShaderProgram\ModelShaderProgram.cpp" />
+    <ClCompile Include="ShaderProgram\NonLightingModelShaderProgram.cpp" />
+    <ClCompile Include="ShaderProgram\ShaderProgram.cpp" />
     <ClCompile Include="Shaders\shader.cpp" />
     <ClCompile Include="Skybox\Skybox.cpp" />
     <ClCompile Include="Texture\Texture Loader\stb_image.c" />
@@ -111,8 +115,8 @@
     <ClInclude Include="FPCamera\FPCamera.h" />
     <ClInclude Include="Game\CarGameObject.h" />
     <ClInclude Include="Game\GenericGameObject.h" />
-    <ClInclude Include="GraphicsDevice\GraphicsDevice.h" />
     <ClInclude Include="InputManager\InputManager.h" />
+    <ClInclude Include="Lighting\DirectionalLightSource.h" />
     <ClInclude Include="Model\Model.h" />
     <ClInclude Include="Model\ModelMesh.h" />
     <ClInclude Include="Model\ModelNode.h" />
@@ -122,14 +126,18 @@
     <ClInclude Include="PhysicsEngine\PhysicsWorld.h" />
     <ClInclude Include="PhysicsEngine\RigidBody.h" />
     <ClInclude Include="Renderer\Renderer.h" />
+    <ClInclude Include="ShaderProgram\LightingModelShaderProgram.h" />
+    <ClInclude Include="ShaderProgram\ModelShaderProgram.h" />
+    <ClInclude Include="ShaderProgram\NonLightingModelShaderProgram.h" />
+    <ClInclude Include="ShaderProgram\ShaderProgram.h" />
     <ClInclude Include="Shaders\shader.hpp" />
     <ClInclude Include="Skybox\Skybox.h" />
     <ClInclude Include="Texture\Texture Loader\stb_image.h" />
     <ClInclude Include="Texture\texture.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="MainFrag.frag" />
-    <None Include="MainVert.vert" />
+    <None Include="GLSLShaders\MainFrag.frag" />
+    <None Include="GLSLShaders\MainVert.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -72,11 +72,11 @@ bool Skybox::LoadFromPath(std::string path, std::string ext)
 	return loaded;
 }
 
-void Skybox::Render(GraphicsDevice* graphicsDevice)
+void Skybox::Render(ModelShaderProgram* modelShader)
 {
 	for (int i = 0; i < 5; i++)
 	{
-		graphicsDevice->BindModelMatrix(&modelMats[i][0][0]);
-		meshes[i].Render(graphicsDevice);
+		modelShader->BindModelMatrix(&modelMats[i][0][0]);
+		meshes[i].Render();
 	}
 }

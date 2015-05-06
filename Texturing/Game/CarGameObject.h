@@ -6,7 +6,8 @@
 #include "PhysicsEngine\CarPhysicsObject.h"
 #include "PhysicsEngine\AABoundingBox.h"
 #include "Model\Model.h"
-#include "GraphicsDevice\GraphicsDevice.h"
+#include "ShaderProgram\ModelShaderProgram.h"
+
 
 class CarGameObject
 {
@@ -31,7 +32,7 @@ public:
 	void Scale(glm::vec3 position);
 
 	void Update(double dt);
-	void Render(GraphicsDevice* graphicsDevice);
+	void Render(ModelShaderProgram* modelShader);
 };
 
 #endif //GenericGameObject_h__

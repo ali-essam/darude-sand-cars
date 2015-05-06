@@ -140,9 +140,9 @@ void Model::Initialize()
 	}
 }
 
-void Model::Render(GraphicsDevice* graphicsDevice, glm::mat4 transformationMatrix)
+void Model::Render(ModelShaderProgram* modelShader, glm::mat4 transformationMatrix)
 {
-	rootNode->Render(graphicsDevice, transformationMatrix);
+	rootNode->Render(modelShader, transformationMatrix);
 
 	// Render meshes ignoring nodes structure
 	/*for (int i = 0; i < meshes.size(); i++)
@@ -151,9 +151,9 @@ void Model::Render(GraphicsDevice* graphicsDevice, glm::mat4 transformationMatri
 	}*/
 }
 
-void Model::Render(GraphicsDevice* graphicsDevice)
+void Model::Render(ModelShaderProgram* modelShader)
 {
-	rootNode->Render(graphicsDevice, glm::mat4(1.0f));
+	rootNode->Render(modelShader, glm::mat4(1.0f));
 }
 
 

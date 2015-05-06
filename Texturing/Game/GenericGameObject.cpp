@@ -18,8 +18,8 @@ void GenericGameObject::Update(double dt)
 	
 }
 
-void GenericGameObject::Render(GraphicsDevice* graphicsDevice)
+void GenericGameObject::Render(ModelShaderProgram* ModelShader)
 {
 	glm::mat4 model = glm::translate(physicsObject->GetPosition());// * modelMatrix;//* glm::scale(0.01f, 0.01f, 0.01f);
-	this->model->Render(graphicsDevice, model);
+	this->model->Render(ModelShader, model);
 }

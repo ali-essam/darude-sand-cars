@@ -26,8 +26,8 @@ void Renderer::Initialize()
 		0,0,0,
 		0,1,0);
 	//////////////////////////////////////////////////////////////////////////
-	graphicsDevice = new GraphicsDevice();
-	graphicsDevice->Initialize();
+	modelShader = new NonLightingModelShaderProgram();
+	modelShader->Initialize();
 
 	track.LoadFromFile("data\\models\\Track01\\track01_.3ds");
 	track.Initialize();
@@ -63,29 +63,29 @@ void Renderer::Initialize()
 
 void Renderer::Draw()
 {
-	graphicsDevice->BeginDraw();
+	modelShader->UseProgram();
 
 	glm::mat4 VP = myCamera->GetProjectionMatrix() * myCamera->GetViewMatrix();
-	graphicsDevice->BindVPMatrix(&VP[0][0]);
+	modelShader->BindVPMatrix(&VP[0][0]);
 
-	track.Render(graphicsDevice, glm::translate(0.f, -30.f, 0.f));
+	track.Render(modelShader, glm::translate(0.f, -30.f, 0.f));
 	
 	glm::mat4 houseM = glm::scale(0.05f, 0.05f, 0.05f);
 
-	house.Render(graphicsDevice, glm::translate(2.0f, 0.0f, 0.0f) * glm::scale(0.2f, 0.2f, 0.2f));
+	house.Render(modelShader, glm::translate(2.0f, 0.0f, 0.0f) * glm::scale(0.2f, 0.2f, 0.2f));
 	//jeep.Render(graphicsDevice, glm::translate(-1.0f, 0.0f, 0.0f) * glm::scale(0.1f, 0.1f, 0.1f) * glm::rotate(-90.0f, glm::vec3(1.0f, 0.0f, 0.0f)));
 	//spider.Render(graphicsDevice, spiderModel);
-	wheel.Render(graphicsDevice, glm::translate(-4.0f, 0.0f, 0.0f) * glm::scale(0.1f, 0.1f, 0.1f)* glm::rotate(-90.0f, glm::vec3(1.0f, 0.0f, 0.0f)));
+	wheel.Render(modelShader, glm::translate(-4.0f, 0.0f, 0.0f) * glm::scale(0.1f, 0.1f, 0.1f)* glm::rotate(-90.0f, glm::vec3(1.0f, 0.0f, 0.0f)));
 
-	skybox.Render(graphicsDevice);
+	skybox.Render(modelShader);
 
-	spiderGameObject->Render(graphicsDevice);
-	jeepGameObject->Render(graphicsDevice);
+	spiderGameObject->Render(modelShader);
+	jeepGameObject->Render(modelShader);
 }
 
 void Renderer::Cleanup()
 {
-	graphicsDevice->CleanUp();
+	modelShader->CleanUp();
 	// CleanUp Models
 }
 

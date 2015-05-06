@@ -13,7 +13,7 @@
 #include "Model/Model.h"
 #include "FPCamera/FPCamera.h"
 #include "EulerCamera/EulerCamera.h"
-#include "GraphicsDevice\GraphicsDevice.h"
+#include "ShaderProgram\NonLightingModelShaderProgram.h"
 #include "InputManager\InputManager.h"
 
 #include "Skybox\Skybox.h"
@@ -26,7 +26,7 @@
 
 class Renderer
 {
-	GraphicsDevice* graphicsDevice;
+	NonLightingModelShaderProgram* modelShader;
 
 	//std::unique_ptr<FPCamera> myCamera;
 	std::unique_ptr<EulerCamera> myCamera;

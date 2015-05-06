@@ -7,7 +7,7 @@
 #include <gl/glew.h>
 
 #include "ModelMesh.h"
-#include "GraphicsDevice\GraphicsDevice.h"
+#include "ShaderProgram\ModelShaderProgram.h"
 
 class ModelNode
 {
@@ -22,7 +22,7 @@ public:
 	ModelNode();
 	~ModelNode();
 
-	void Render(GraphicsDevice* graphicsDevice, glm::mat4 parentTransforms);
+	void Render(ModelShaderProgram* modelShader, glm::mat4 parentTransforms);
 	ModelNode* FindNode(std::string name);
 };
 

@@ -1,7 +1,13 @@
 #include "PhysicsObject.h"
 
-PhysicsObject::PhysicsObject()
+PhysicsObject::PhysicsObject():mass(1.f), position(glm::vec3(0.f)), velocity(glm::vec3(0.f))
 {
+	boundingBox = new AABoundingBox(position, glm::vec3(0,0,0));
+}
+
+PhysicsObject::PhysicsObject(AABoundingBox* boundingBox):mass(1.f), position(glm::vec3(0.f)), velocity(glm::vec3(0.f))
+{
+	this->SetBoundingBox(boundingBox);
 }
 
 PhysicsObject::~PhysicsObject()

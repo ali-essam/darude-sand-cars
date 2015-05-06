@@ -44,6 +44,7 @@ bool Model::LoadFromFile(std::string modelFileName, bool flipUVs)
 	const aiScene* scene = importer.ReadFile(modelFileName.c_str(),
 		aiProcess_Triangulate |
 		aiProcess_GenSmoothNormals |
+		aiProcess_MakeLeftHanded|
 		(flipUVs?aiProcess_FlipUVs:0));
 
 	if(!scene){

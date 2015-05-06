@@ -15,6 +15,7 @@ protected:
 	AABoundingBox* boundingBox;
 public:
 	PhysicsObject();
+	PhysicsObject(AABoundingBox* boundingBox);
 	~PhysicsObject();
 
 	inline float GetMass() { return mass; }

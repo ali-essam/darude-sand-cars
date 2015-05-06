@@ -86,7 +86,8 @@
     <ClCompile Include="Application Manager\ApplicationManager.cpp" />
     <ClCompile Include="EulerCamera\EulerCamera.cpp" />
     <ClCompile Include="FPCamera\FPCamera.cpp" />
-    <ClCompile Include="Game\GameObject.cpp" />
+    <ClCompile Include="Game\CarGameObject.cpp" />
+    <ClCompile Include="Game\GenericGameObject.cpp" />
     <ClCompile Include="GraphicsDevice\GraphicsDevice.cpp" />
     <ClCompile Include="InputManager\InputManager.cpp" />
     <ClCompile Include="main.cpp" />
@@ -94,6 +95,7 @@
     <ClCompile Include="Model\ModelMesh.cpp" />
     <ClCompile Include="Model\ModelNode.cpp" />
     <ClCompile Include="PhysicsEngine\AABoundingBox.cpp" />
+    <ClCompile Include="PhysicsEngine\CarPhysicsObject.cpp" />
     <ClCompile Include="PhysicsEngine\PhysicsObject.cpp" />
     <ClCompile Include="PhysicsEngine\PhysicsWorld.cpp" />
     <ClCompile Include="PhysicsEngine\RigidBody.cpp" />
@@ -107,13 +109,15 @@
     <ClInclude Include="Application Manager\ApplicationManager.h" />
     <ClInclude Include="EulerCamera\EulerCamera.h" />
     <ClInclude Include="FPCamera\FPCamera.h" />
-    <ClInclude Include="Game\GameObject.h" />
+    <ClInclude Include="Game\CarGameObject.h" />
+    <ClInclude Include="Game\GenericGameObject.h" />
     <ClInclude Include="GraphicsDevice\GraphicsDevice.h" />
     <ClInclude Include="InputManager\InputManager.h" />
     <ClInclude Include="Model\Model.h" />
     <ClInclude Include="Model\ModelMesh.h" />
     <ClInclude Include="Model\ModelNode.h" />
     <ClInclude Include="PhysicsEngine\AABoundingBox.h" />
+    <ClInclude Include="PhysicsEngine\CarPhysicsObject.h" />
     <ClInclude Include="PhysicsEngine\PhysicsObject.h" />
     <ClInclude Include="PhysicsEngine\PhysicsWorld.h" />
     <ClInclude Include="PhysicsEngine\RigidBody.h" />

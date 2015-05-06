@@ -17,8 +17,12 @@
 #include "InputManager\InputManager.h"
 
 #include "Skybox\Skybox.h"
-#include "Game\GameObject.h"
+#include "Game\GenericGameObject.h"
+#include "Game\CarGameObject.h"
 #include "PhysicsEngine\PhysicsWorld.h"
+#include "PhysicsEngine\RigidBody.h"
+#include "PhysicsEngine\CarPhysicsObject.h"
+#include "PhysicsEngine\PhysicsObject.h"
 
 class Renderer
 {
@@ -31,13 +35,17 @@ class Renderer
 	Model spider;
 	Model wheel;
 	Model jeep;
+	Model track;
 
 	Skybox skybox;
 
 	PhysicsWorld physicsWorld;
 
-	GameObject spiderGameObject;
-	GameObject jeepGameObject;
+	GenericGameObject* spiderGameObject;
+	CarGameObject* jeepGameObject;
+	RigidBody spiderPhysicsObject;
+	RigidBody jeepPhysicsObject;
+	CarPhysicsObject jeepCarPhysicsObject;
 
 	glm::mat4 spiderModel;
 public:

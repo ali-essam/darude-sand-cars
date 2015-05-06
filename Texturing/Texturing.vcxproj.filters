@@ -105,11 +105,17 @@
     <ClCompile Include="PhysicsEngine\PhysicsWorld.cpp">
       <Filter>PhysicsEngine</Filter>
     </ClCompile>
-    <ClCompile Include="Game\GameObject.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="PhysicsEngine\RigidBody.cpp">
       <Filter>PhysicsEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GenericGameObject.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsEngine\CarPhysicsObject.cpp">
+      <Filter>PhysicsEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\CarGameObject.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -161,11 +167,17 @@
     <ClInclude Include="PhysicsEngine\PhysicsWorld.h">
       <Filter>PhysicsEngine</Filter>
     </ClInclude>
-    <ClInclude Include="Game\GameObject.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="PhysicsEngine\RigidBody.h">
       <Filter>PhysicsEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GenericGameObject.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsEngine\CarPhysicsObject.h">
+      <Filter>PhysicsEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\CarGameObject.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

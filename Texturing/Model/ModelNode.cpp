@@ -21,7 +21,7 @@ void ModelNode::Render(GraphicsDevice* graphicsDevice, glm::mat4 parentTransform
 	}
 	for (int i = 0; i < children.size(); i++)
 	{
-		children[i]->Render(graphicsDevice, parentTransforms);
+		children[i]->Render(graphicsDevice, curTransform);
 	}
 }
 

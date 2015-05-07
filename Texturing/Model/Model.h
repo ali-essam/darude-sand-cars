@@ -14,7 +14,8 @@
 #include "ModelMesh.h"
 #include "ModelNode.h"
 #include "Texture/texture.h"
-#include "GraphicsDevice\GraphicsDevice.h"
+#include "ShaderProgram\ModelShaderProgram.h"
+
 
 class Model
 {
@@ -34,8 +35,8 @@ public:
 
 	bool LoadFromFile(std::string modelFileName, bool flipUVs = true);
 	void Initialize();
-	void Render(GraphicsDevice* graphicsDevice);
-	void Render(GraphicsDevice* graphicsDevice, glm::mat4 transformationMatrix);
+	void Render(ModelShaderProgram* modelShader);
+	void Render(ModelShaderProgram* modelShader, glm::mat4 transformationMatrix);
 	void Cleanup();
 
 	std::vector<glm::vec3> GetAllVerticies();

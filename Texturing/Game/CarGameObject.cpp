@@ -21,10 +21,10 @@ void CarGameObject::Update(double dt)
 		angle += 0.01/2.f;
 }
 
-void CarGameObject::Render(GraphicsDevice* graphicsDevice)
+void CarGameObject::Render(ModelShaderProgram* modelShader)
 {
 	glm::mat4 model = glm::translate(physicsObject.GetPosition()) * glm::rotate(-(physicsObject.GetCarHeading() * 180.f / 3.14f - 90.f), glm::vec3(0,1,0));
-	this->model->Render(graphicsDevice, model);
+	this->model->Render(modelShader, model);
 }
 
 

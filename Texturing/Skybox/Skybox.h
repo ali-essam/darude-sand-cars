@@ -7,7 +7,7 @@
 #include <string>
 
 #include "Model\ModelMesh.h"
-#include "GraphicsDevice\GraphicsDevice.h"
+#include "ShaderProgram\ModelShaderProgram.h"
 #include "Texture\texture.h"
 
 
@@ -24,7 +24,7 @@ public:
 	
 	bool LoadFromPath(std::string path, std::string ext = "JPG");
 	void Initialize();
-	void Render(GraphicsDevice* graphicsDevice);
+	void Render(ModelShaderProgram* modelShader);
 	void Cleanup();
 };
 

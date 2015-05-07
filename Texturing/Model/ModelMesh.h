@@ -6,7 +6,6 @@
 #include <gl\glew.h>
 
 #include "Texture\texture.h"
-#include "GraphicsDevice\GraphicsDevice.h"
 class ModelMesh
 {
 private:
@@ -32,7 +31,7 @@ public:
 	Texture* texture;
 
 	void Initialize();
-	void Render(GraphicsDevice* graphicsDevice);
+	void Render();
 	void Cleanup();
 };
 

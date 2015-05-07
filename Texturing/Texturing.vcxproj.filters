@@ -37,9 +37,6 @@
     <Filter Include="Texture\Texture Loader">
       <UniqueIdentifier>{a8af9eff-46fe-4375-80ff-7467b87b5501}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GraphicsDevice">
-      <UniqueIdentifier>{1c70f02f-6ec9-4e40-937f-e81a447a9118}</UniqueIdentifier>
-    </Filter>
     <Filter Include="InputManager">
       <UniqueIdentifier>{a160ea9a-d09c-44ac-9bd9-8503f5cbaa45}</UniqueIdentifier>
     </Filter>
@@ -51,6 +48,15 @@
     </Filter>
     <Filter Include="Game">
       <UniqueIdentifier>{49bebdea-2833-4cdc-9b9c-b75b10cada35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderProgram">
+      <UniqueIdentifier>{7d04e43f-c55a-4344-b4e0-ec893ba1ef42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lighting">
+      <UniqueIdentifier>{c97555d0-a885-47d6-b5be-774f81fba4ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GLSLShaders">
+      <UniqueIdentifier>{c6132f40-d20d-4584-90d1-2b40d342b324}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -87,9 +93,6 @@
     <ClCompile Include="Model\ModelNode.cpp">
       <Filter>Model</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicsDevice\GraphicsDevice.cpp">
-      <Filter>GraphicsDevice</Filter>
-    </ClCompile>
     <ClCompile Include="InputManager\InputManager.cpp">
       <Filter>InputManager</Filter>
     </ClCompile>
@@ -116,6 +119,21 @@
     </ClCompile>
     <ClCompile Include="Game\CarGameObject.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProgram\LightingModelShaderProgram.cpp">
+      <Filter>ShaderProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProgram\ModelShaderProgram.cpp">
+      <Filter>ShaderProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProgram\ShaderProgram.cpp">
+      <Filter>ShaderProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProgram\NonLightingModelShaderProgram.cpp">
+      <Filter>ShaderProgram</Filter>
+    </ClCompile>
+    <ClCompile Include="Lighting\DirectionalLightSource.cpp">
+      <Filter>Lighting</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -149,9 +167,6 @@
     <ClInclude Include="Model\ModelNode.h">
       <Filter>Model</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicsDevice\GraphicsDevice.h">
-      <Filter>GraphicsDevice</Filter>
-    </ClInclude>
     <ClInclude Include="InputManager\InputManager.h">
       <Filter>InputManager</Filter>
     </ClInclude>
@@ -179,13 +194,34 @@
     <ClInclude Include="Game\CarGameObject.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="ShaderProgram\LightingModelShaderProgram.h">
+      <Filter>ShaderProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProgram\ModelShaderProgram.h">
+      <Filter>ShaderProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProgram\ShaderProgram.h">
+      <Filter>ShaderProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProgram\NonLightingModelShaderProgram.h">
+      <Filter>ShaderProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="Lighting\DirectionalLightSource.h">
+      <Filter>Lighting</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="MainVert.vert">
-      <Filter>Source Files</Filter>
+    <None Include="GLSLShaders\MainFrag.frag">
+      <Filter>GLSLShaders</Filter>
     </None>
-    <None Include="MainFrag.frag">
-      <Filter>Source Files</Filter>
+    <None Include="GLSLShaders\MainVert.vert">
+      <Filter>GLSLShaders</Filter>
+    </None>
+    <None Include="GLSLShaders\LightingFrag.frag">
+      <Filter>GLSLShaders</Filter>
+    </None>
+    <None Include="GLSLShaders\LightingVert.vert">
+      <Filter>GLSLShaders</Filter>
     </None>
   </ItemGroup>
 </Project>

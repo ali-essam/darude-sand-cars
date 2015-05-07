@@ -10,18 +10,18 @@ ModelNode::~ModelNode(void)
 {
 }
 
-void ModelNode::Render(GraphicsDevice* graphicsDevice, glm::mat4 parentTransforms)
+void ModelNode::Render(ModelShaderProgram* modelShader, glm::mat4 parentTransforms)
 {
 	glm::mat4 curTransform = parentTransforms * this->transforms;
 	//glm::mat4 curTransform = parentTransforms;
-	graphicsDevice->BindModelMatrix(&curTransform[0][0]);
+	modelShader->BindModelMatrix(&curTransform[0][0]);
 	for (int i = 0; i < meshes.size(); i++)
 	{
-		meshes[i]->Render(graphicsDevice);
+		meshes[i]->Render();
 	}
 	for (int i = 0; i < children.size(); i++)
 	{
-		children[i]->Render(graphicsDevice, curTransform);
+		children[i]->Render(modelShader, curTransform);
 	}
 }
 

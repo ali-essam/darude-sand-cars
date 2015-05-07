@@ -61,7 +61,7 @@ void ModelMesh::Initialize()
 	//now all the state is save in the Vertex Array Object, we only need to bind it in the drawing code (each frame).
 }
 
-void ModelMesh::Render(GraphicsDevice* graphicsDevice)
+void ModelMesh::Render()
 {
 	texture->Bind();
 	glBindVertexArray(mVertexArrayObjectID);

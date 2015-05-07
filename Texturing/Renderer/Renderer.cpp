@@ -52,10 +52,10 @@ void Renderer::Initialize()
 	jeep.LoadFromFile("data\\models\\Jeep\\jeep1.3ds");
 	jeep.Initialize();
 
-	jeepCarPhysicsObject.SetMass(1);
-	jeepCarPhysicsObject.SetPosition(glm::vec3(0, 0, 55));
-	physicsWorld.physicsObjects.push_back(&(jeepCarPhysicsObject));
-	jeepGameObject = new CarGameObject(&jeep, &jeepCarPhysicsObject);
+	
+	jeepGameObject = new CarGameObject(&jeep);
+	jeepGameObject->SetPosition(glm::vec3(0, 0, 210));
+	physicsWorld.physicsObjects.push_back(jeepGameObject->GetPhysicsObject());
 
 	skybox.LoadFromPath("data\\textures\\skybox\\");
 	skybox.Initialize();
@@ -104,19 +104,19 @@ void Renderer::Update(double deltaTime, InputManager* inputManager)
 
 void Renderer::HandleKeyboardInput(InputManager* inputManager)
 {
-	if(inputManager->IsKeyPressed(GLFW_KEY_UP) || inputManager->IsKeyPressed(GLFW_KEY_W))
+	if(inputManager->IsKeyPressed(GLFW_KEY_UP))
 	{
 		myCamera->Walk(.5);
 	}
-	if(inputManager->IsKeyPressed(GLFW_KEY_DOWN) || inputManager->IsKeyPressed(GLFW_KEY_S))
+	if(inputManager->IsKeyPressed(GLFW_KEY_DOWN))
 	{
 		myCamera->Walk(-0.5);
 	}
-	if(inputManager->IsKeyPressed(GLFW_KEY_RIGHT) || inputManager->IsKeyPressed(GLFW_KEY_D))
+	if(inputManager->IsKeyPressed(GLFW_KEY_RIGHT))
 	{
 		myCamera->Strafe(0.5);
 	}
-	if(inputManager->IsKeyPressed(GLFW_KEY_LEFT) || inputManager->IsKeyPressed(GLFW_KEY_A))
+	if(inputManager->IsKeyPressed(GLFW_KEY_LEFT))
 	{
 		myCamera->Strafe(-0.5);
 	}
@@ -128,19 +128,17 @@ void Renderer::HandleKeyboardInput(InputManager* inputManager)
 	{
 		myCamera->Fly(-0.5);
 	}
-	if(inputManager->IsKeyPressed(GLFW_KEY_Q)){
-		if(jeepCarPhysicsObject.steerAngle > 0.f)
-			jeepCarPhysicsObject.steerAngle = 0.0f;
-		if(jeepCarPhysicsObject.steerAngle > -45.f/360.f*3.14f)
-			jeepCarPhysicsObject.steerAngle -= 0.01f;
-		//printf("Steering Angle: %.2f\n", jeepCarPhysicsObject.steerAngle);
+	if(inputManager->IsKeyPressed(GLFW_KEY_W)){
+		jeepGameObject->Throttle();
 	}
-	if(inputManager->IsKeyPressed(GLFW_KEY_E)){
-		if(jeepCarPhysicsObject.steerAngle < 0.f)
-			jeepCarPhysicsObject.steerAngle = 0.0f;
-		if(jeepCarPhysicsObject.steerAngle < 45.f/360.f*3.14f)
-			jeepCarPhysicsObject.steerAngle += 0.01;
-		//printf("Steering Angle: %.2f\n", jeepCarPhysicsObject.steerAngle);
+	if(inputManager->IsKeyPressed(GLFW_KEY_S)){
+		jeepGameObject->Break();
+	}
+	if(inputManager->IsKeyPressed(GLFW_KEY_D)){
+		jeepGameObject->SteerRight();
+	}
+	if(inputManager->IsKeyPressed(GLFW_KEY_A)){
+		jeepGameObject->SteerLeft();
 	}
 }
 

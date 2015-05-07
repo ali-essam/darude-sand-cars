@@ -13,22 +13,27 @@ class CarGameObject
 
 protected:
 	AABoundingBox boundingBox;
-	CarPhysicsObject* physicsObject;
+	CarPhysicsObject physicsObject;
 	Model* model;
 	glm::mat4 modelMatrix;
 public:
-	CarGameObject(Model* model, CarPhysicsObject* physicsObject);
+	CarGameObject(Model* model);
 	~CarGameObject();
 
 
 	inline AABoundingBox GetBoundingBox() { return boundingBox; }
-	inline PhysicsObject* GetPhysicsObject() { return physicsObject; }
+	inline PhysicsObject* GetPhysicsObject() { return &physicsObject; }
+	inline glm::vec3 GetPosition() {return physicsObject.GetPosition(); }
+	inline float GetSteerAngle() { return physicsObject.GetSteerAngle(); };
 	inline Model* GetModel() { return model; }
 
-	void Translate(glm::vec3 t);
 	void SetPosition(glm::vec3 position);
-	void Rotate(glm::vec3 angle);
-	void Scale(glm::vec3 position);
+
+	void SteerRight();
+	void SteerLeft();
+	void Throttle();
+	void Break();
+
 
 	void Update(double dt);
 	void Render(GraphicsDevice* graphicsDevice);

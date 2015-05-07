@@ -44,8 +44,6 @@ class Renderer
 	GenericGameObject* spiderGameObject;
 	CarGameObject* jeepGameObject;
 	RigidBody spiderPhysicsObject;
-	RigidBody jeepPhysicsObject;
-	CarPhysicsObject jeepCarPhysicsObject;
 
 	glm::mat4 spiderModel;
 public:

@@ -217,5 +217,11 @@
     <None Include="GLSLShaders\MainVert.vert">
       <Filter>GLSLShaders</Filter>
     </None>
+    <None Include="GLSLShaders\LightingFrag.frag">
+      <Filter>GLSLShaders</Filter>
+    </None>
+    <None Include="GLSLShaders\LightingVert.vert">
+      <Filter>GLSLShaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

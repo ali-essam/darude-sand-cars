@@ -14,6 +14,8 @@
 #include "FPCamera/FPCamera.h"
 #include "EulerCamera/EulerCamera.h"
 #include "ShaderProgram\NonLightingModelShaderProgram.h"
+#include "ShaderProgram\LightingModelShaderProgram.h"
+#include "Lighting\DirectionalLightSource.h"
 #include "InputManager\InputManager.h"
 
 #include "Skybox\Skybox.h"
@@ -26,7 +28,8 @@
 
 class Renderer
 {
-	NonLightingModelShaderProgram* modelShader;
+	NonLightingModelShaderProgram* noLightModelShader;
+	LightingModelShaderProgram* lightModelShader;
 
 	//std::unique_ptr<FPCamera> myCamera;
 	std::unique_ptr<EulerCamera> myCamera;

@@ -8,6 +8,9 @@
 
 class LightingModelShaderProgram : public ModelShaderProgram
 {
+	GLuint ambientLightColorID;
+	GLuint directionalLightDirectionID;
+	GLuint directionalLightColorID;
 public:
 	LightingModelShaderProgram();
 	~LightingModelShaderProgram();
@@ -18,7 +21,7 @@ public:
 	void BindModelMatrix(GLfloat* value);
 	void BindVPMatrix(GLfloat* value);
 
-	void SetDirectionalLight(DirectionalLightSource * lightSource);
+	void SetDirectionalLight(DirectionalLightSource& lightSource);
 };
 
 #endif // LightingModelShaderProgram_h__

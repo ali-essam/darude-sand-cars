@@ -9,13 +9,15 @@ class DirectionalLightSource
 	glm::vec3 color;
 
 public:
+	DirectionalLightSource::DirectionalLightSource();
+	DirectionalLightSource::DirectionalLightSource(glm::vec3 direction, glm::vec3 color);
 
-	inline glm::vec3 GetDirection();
-	inline glm::vec3 GetColor();
+
+	glm::vec3 GetDirection();
+	glm::vec3 GetColor();
     
-	inline void SetDirection(glm::vec3 _direction);
-	inline void SetColor(glm::vec3 _color);
-
+	void SetDirection(glm::vec3 _direction);
+	void SetColor(glm::vec3 _color);
 };
 
 #endif // DirectionalLightSource_h__

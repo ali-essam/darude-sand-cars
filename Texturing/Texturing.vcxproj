@@ -136,6 +136,8 @@
     <ClInclude Include="Texture\texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="GLSLShaders\LightingFrag.frag" />
+    <None Include="GLSLShaders\LightingVert.vert" />
     <None Include="GLSLShaders\MainFrag.frag" />
     <None Include="GLSLShaders\MainVert.vert" />
   </ItemGroup>

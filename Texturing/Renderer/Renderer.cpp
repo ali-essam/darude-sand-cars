@@ -26,9 +26,16 @@ void Renderer::Initialize()
 		0,0,0,
 		0,1,0);
 	//////////////////////////////////////////////////////////////////////////
-	modelShader = new NonLightingModelShaderProgram();
-	modelShader->Initialize();
+	noLightModelShader = new NonLightingModelShaderProgram();
+	noLightModelShader->Initialize();
 
+	lightModelShader = new LightingModelShaderProgram();
+	lightModelShader->Initialize();
+
+	DirectionalLightSource lightSource(glm::vec3(0.1f,5.f,0.1f), glm::normalize(glm::vec3(250,250,150)));
+	lightModelShader->SetDirectionalLight(lightSource);
+
+	/////////////////////////////////////////////////////////////////////////
 	track.LoadFromFile("data\\models\\Track01\\track01_.3ds");
 	track.Initialize();
 
@@ -63,29 +70,33 @@ void Renderer::Initialize()
 
 void Renderer::Draw()
 {
-	modelShader->UseProgram();
-
 	glm::mat4 VP = myCamera->GetProjectionMatrix() * myCamera->GetViewMatrix();
-	modelShader->BindVPMatrix(&VP[0][0]);
 
-	track.Render(modelShader, glm::translate(0.f, -30.f, 0.f));
+
+	lightModelShader->UseProgram();
+	lightModelShader->BindVPMatrix(&VP[0][0]);
+
+	track.Render(lightModelShader, glm::translate(0.f, -30.f, 0.f));
 	
 	glm::mat4 houseM = glm::scale(0.05f, 0.05f, 0.05f);
 
-	house.Render(modelShader, glm::translate(2.0f, 0.0f, 0.0f) * glm::scale(0.2f, 0.2f, 0.2f));
-	//jeep.Render(graphicsDevice, glm::translate(-1.0f, 0.0f, 0.0f) * glm::scale(0.1f, 0.1f, 0.1f) * glm::rotate(-90.0f, glm::vec3(1.0f, 0.0f, 0.0f)));
-	//spider.Render(graphicsDevice, spiderModel);
-	wheel.Render(modelShader, glm::translate(-4.0f, 0.0f, 0.0f) * glm::scale(0.1f, 0.1f, 0.1f)* glm::rotate(-90.0f, glm::vec3(1.0f, 0.0f, 0.0f)));
+	house.Render(lightModelShader, glm::translate(2.0f, 0.0f, 0.0f) * glm::scale(0.2f, 0.2f, 0.2f));
+	wheel.Render(lightModelShader, glm::translate(-4.0f, 0.0f, 0.0f) * glm::scale(0.1f, 0.1f, 0.1f)* glm::rotate(-90.0f, glm::vec3(1.0f, 0.0f, 0.0f)));
 
-	skybox.Render(modelShader);
+	spiderGameObject->Render(lightModelShader);
+	jeepGameObject->Render(lightModelShader);
 
-	spiderGameObject->Render(modelShader);
-	jeepGameObject->Render(modelShader);
+	// No Lighting models
+	noLightModelShader->UseProgram();
+	noLightModelShader->BindVPMatrix(&VP[0][0]);
+	
+	skybox.Render(noLightModelShader);
 }
 
 void Renderer::Cleanup()
 {
-	modelShader->CleanUp();
+	noLightModelShader->CleanUp();
+	lightModelShader->CleanUp();
 	// CleanUp Models
 }
 

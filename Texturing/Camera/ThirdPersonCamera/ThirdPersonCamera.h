@@ -22,5 +22,8 @@ public:
 
 	void UpdateViewMatrix();
 	void Reset(glm::vec3 &eye, glm::vec3 &center, glm::vec3  &up);
+
+	void setCameraHeight(float height);
+	float getCameraHeight();
 };
 #endif

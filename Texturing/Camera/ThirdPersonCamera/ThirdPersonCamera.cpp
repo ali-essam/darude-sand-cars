@@ -43,3 +43,13 @@ void ThirdPersonCamera::UpdateViewMatrix()
 
 	mViewMatrix = glm::lookAt(mPosition, mObjectPosition, mUp);
 }
+
+void ThirdPersonCamera::setCameraHeight(float height)
+{
+	distanceOnY = height;
+}
+
+float ThirdPersonCamera::getCameraHeight()
+{
+	return distanceOnY;
+}

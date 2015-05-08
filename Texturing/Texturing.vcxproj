@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -20,13 +20,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -84,8 +84,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application Manager\ApplicationManager.cpp" />
-    <ClCompile Include="EulerCamera\EulerCamera.cpp" />
-    <ClCompile Include="FPCamera\FPCamera.cpp" />
+    <ClCompile Include="Camera\Camera.cpp" />
+    <ClCompile Include="Camera\FirstPersonCamera\FirstPersonCamera.cpp" />
+    <ClCompile Include="Camera\ThirdPersonCamera\ThirdPersonCamera.cpp" />
     <ClCompile Include="GraphicsDevice\GraphicsDevice.cpp" />
     <ClCompile Include="InputManager\InputManager.cpp" />
     <ClCompile Include="main.cpp" />
@@ -100,8 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application Manager\ApplicationManager.h" />
-    <ClInclude Include="EulerCamera\EulerCamera.h" />
-    <ClInclude Include="FPCamera\FPCamera.h" />
+    <ClInclude Include="Camera\Camera.h" />
+    <ClInclude Include="Camera\FirstPersonCamera\FirstPersonCamera.h" />
+    <ClInclude Include="Camera\ThirdPersonCamera\ThirdPersonCamera.h" />
     <ClInclude Include="GraphicsDevice\GraphicsDevice.h" />
     <ClInclude Include="InputManager\InputManager.h" />
     <ClInclude Include="Model\Model.h" />

@@ -11,8 +11,8 @@
 #include "Shaders/shader.hpp"
 #include "Texture/texture.h"
 #include "Model/Model.h"
-#include "FPCamera/FPCamera.h"
-#include "EulerCamera/EulerCamera.h"
+#include "Camera\FirstPersonCamera\FirstPersonCamera.h"
+#include "Camera\ThirdPersonCamera\ThirdPersonCamera.h"
 #include "GraphicsDevice\GraphicsDevice.h"
 #include "InputManager\InputManager.h"
 
@@ -22,9 +22,8 @@ class Renderer
 {
 	GraphicsDevice* graphicsDevice;
 
-	//std::unique_ptr<FPCamera> myCamera;
-	std::unique_ptr<EulerCamera> myCamera;
-
+	std::unique_ptr<Camera> myCamera;
+	glm::vec3 objectPosition;
 	Model house;
 	Model spider;
 	Model wheel;

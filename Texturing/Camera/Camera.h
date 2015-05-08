@@ -1,5 +1,5 @@
-#ifndef EulerCamera_h__
-#define EulerCamera_h__
+#ifndef Camera_h__
+#define Camera_h__
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -7,9 +7,10 @@
 #include <glm/gtc/quaternion.hpp>
 #include <glm/gtx/quaternion.hpp>
 
-//Note: this camera assumes left hand rule.
-class EulerCamera
+
+class Camera
 {
+protected:
 	glm::vec3 mPosition;
 	glm::vec3 mUp;
 	glm::vec3 mRight;
@@ -17,40 +18,50 @@ class EulerCamera
 	glm::mat4 mViewMatrix;
 	glm::mat4 mProjectionMatrix;
 
-	double mAngleX,mAngleY;
+	glm::vec3 mObjectPosition;
 
-	glm::vec3 GetLookDirection();
+	double mAngleX, mAngleY;
 
 public:
-	EulerCamera(void);
-	~EulerCamera(void);
+	Camera();
+	
+#pragma region Setters and Getters
+	void setCameraDirection(glm::vec3 direction);
+	glm::vec3 getCameraDirection();
 
-	void UpdateViewMatrix();
+	void setCameraPosition(glm::vec3 position);
+	glm::vec3 getCameraPosition();
+
+	void setObjectPosition(glm::vec3 position);
+	glm::vec3 getObjectPosition();
+	
+	void setYawAngle(float angle);
+
 	glm::mat4 GetViewMatrix();
 	void SetPerspectiveProjection(float FOV, float aspectRatio, float near, float far);
 	glm::mat4 GetProjectionMatrix();
+#pragma endregion
 
-	void Reset(float eyeX, float eyeY, float eyeZ, float centerX, float centerY, float centerZ, float upX, float upY, float upZ);
-	void Reset(const glm::vec3 &eye, const glm::vec3 &center, glm::vec3  &up);
-
+	virtual void Reset(glm::vec3 &eye, glm::vec3 &center, glm::vec3  &up);
+	virtual void UpdateViewMatrix();
 
 #pragma region Rotations
 	/// <summary>
 	/// Rotates the axes (N, R) about the U-axis with the specified angle. This is equivalent to
 	/// a left-turn.
 	/// </summary>//y--->z--->x
-	void Yaw(float angleDegrees);
+	virtual void Yaw(float angleDegrees);
 
 	/// <summary>
 	/// Rotates the axes (U, N) about the R-axis with the specified angle. This is equivalent
 	/// to a look-up (up turn).
 	/// </summary>//x--->y--->z
-	void Pitch(float angleDegrees);
+	virtual void Pitch(float angleDegrees);
 
 	/// <summary>
 	/// Rotates the axes (R, U) about the N-axis with the specified angle.
 	/// </summary>//z--->x--->y
-	void Roll(float angleDegrees);
+	virtual void Roll(float angleDegrees);
 #pragma endregion
 
 #pragma region Translations
@@ -59,28 +70,23 @@ public:
 	/// Moves the eye point a distance dist forward == -dist * N
 	/// Walk
 	/// </summary>
-	void Walk(float dist);
+	virtual void Walk(float dist);
 
 	/// <summary>
 	/// Moves the eye point a distance dist to the right == +dist * R
 	/// Strafe
 	/// </summary>
-	void Strafe(float dist);
+	virtual void Strafe(float dist);
 
 	/// <summary>
 	/// Moves the eye point a distance dist upward == +dist * U
 	/// Fly
 	/// </summary>
-	void Fly(float dist);
+	virtual void Fly(float dist);
 
 #pragma endregion
 
-	/// <summary>
-	/// Moves the eye position a distance stepR along the vector R,
-	/// a distance stepU along the vector U, and a distance stepD
-	/// along the vector N.
-	/// </summary>
-	void Slide(float stepR, float stepU, float stepD);
+	virtual void Slide(float stepR, float stepU, float stepD);
 };
-#endif // EulerCamera_h__
 
+#endif

@@ -16,12 +16,6 @@
     <Filter Include="Application Manager">
       <UniqueIdentifier>{9084201f-c04a-4a0d-82e3-ed2f82c4b0b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Euler Camera">
-      <UniqueIdentifier>{9fe4a877-794d-4da7-9db7-746e7b7e917d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FPCamera">
-      <UniqueIdentifier>{9601e4d4-93f8-433b-8d4e-18146ef4118d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Renderer">
       <UniqueIdentifier>{b001ad5c-b097-48e2-95f4-9fcf78fe6083}</UniqueIdentifier>
     </Filter>
@@ -46,16 +40,19 @@
     <Filter Include="Skybox">
       <UniqueIdentifier>{1a8b70c7-55c6-49bb-9e19-683fed763b56}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{d72947b6-520f-43fe-8308-f2c41770667f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera\FirstPersonCamera">
+      <UniqueIdentifier>{9fe4a877-794d-4da7-9db7-746e7b7e917d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera\ThirdPersonCamera">
+      <UniqueIdentifier>{db7cd2cf-6056-4e64-bf31-d53ade3c541d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application Manager\ApplicationManager.cpp">
       <Filter>Application Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="EulerCamera\EulerCamera.cpp">
-      <Filter>Euler Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="FPCamera\FPCamera.cpp">
-      <Filter>FPCamera</Filter>
     </ClCompile>
     <ClCompile Include="Shaders\shader.cpp">
       <Filter>Shaders</Filter>
@@ -90,16 +87,19 @@
     <ClCompile Include="Skybox\Skybox.cpp">
       <Filter>Skybox</Filter>
     </ClCompile>
+    <ClCompile Include="Camera\FirstPersonCamera\FirstPersonCamera.cpp">
+      <Filter>Camera\FirstPersonCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\Camera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\ThirdPersonCamera\ThirdPersonCamera.cpp">
+      <Filter>Camera\ThirdPersonCamera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application Manager\ApplicationManager.h">
       <Filter>Application Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="EulerCamera\EulerCamera.h">
-      <Filter>Euler Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="FPCamera\FPCamera.h">
-      <Filter>FPCamera</Filter>
     </ClInclude>
     <ClInclude Include="Shaders\shader.hpp">
       <Filter>Shaders</Filter>
@@ -130,6 +130,15 @@
     </ClInclude>
     <ClInclude Include="Skybox\Skybox.h">
       <Filter>Skybox</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\FirstPersonCamera\FirstPersonCamera.h">
+      <Filter>Camera\FirstPersonCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\ThirdPersonCamera\ThirdPersonCamera.h">
+      <Filter>Camera\ThirdPersonCamera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

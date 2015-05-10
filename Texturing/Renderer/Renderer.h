@@ -6,16 +6,17 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <memory>
+#include <queue>
 
 
 #include "Shaders/shader.hpp"
 #include "Texture/texture.h"
 #include "Model/Model.h"
-#include "FPCamera/FPCamera.h"
-#include "EulerCamera/EulerCamera.h"
 #include "ShaderProgram\NonLightingModelShaderProgram.h"
 #include "ShaderProgram\LightingModelShaderProgram.h"
 #include "Lighting\DirectionalLightSource.h"
+#include "Camera\FirstPersonCamera\FirstPersonCamera.h"
+#include "Camera\ThirdPersonCamera\ThirdPersonCamera.h"
 #include "InputManager\InputManager.h"
 
 #include "Skybox\Skybox.h"
@@ -31,9 +32,12 @@ class Renderer
 	NonLightingModelShaderProgram* noLightModelShader;
 	LightingModelShaderProgram* lightModelShader;
 
-	//std::unique_ptr<FPCamera> myCamera;
-	std::unique_ptr<EulerCamera> myCamera;
-
+	std::queue<Camera*> cams;
+	Camera* currentCam;
+	FirstPersonCamera* freeCam;
+	ThirdPersonCamera* carCam1;
+	ThirdPersonCamera* carCam2;
+	glm::vec3 objectPosition;
 	Model house;
 	Model spider;
 	Model wheel;

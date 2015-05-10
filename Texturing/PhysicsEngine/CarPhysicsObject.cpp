@@ -1,7 +1,7 @@
 #include "CarPhysicsObject.h"
 
-CarPhysicsObject::CarPhysicsObject():steerAngle(0.f), carHeading(3.14f/2.f), wheelBase(20.f),
-	carSpeed(0.f), engineForce(0.00005f), breakForce(-0.0001f), maxCarSpeed(0.2f)
+CarPhysicsObject::CarPhysicsObject():steerAngle(0.f), carHeading(3.14f/2.f), wheelBase(10.f),
+	carSpeed(0.f), engineForce(0.00005f), breakForce(-0.0001f), maxCarSpeed(0.2f), maxSteerAngle(M_PI / 6.f)
 {
 	velocity = carSpeed * glm::normalize(glm::vec3(cos(carHeading), 0.f, sin(carHeading)));
 	ResetControls();
@@ -31,24 +31,24 @@ void CarPhysicsObject::Update(float dt)
 
 	if(steeringRight)
 	{
-		steerAngle += 0.01 *dt;
-		if(steerAngle > M_PI_4)
-			steerAngle = M_PI_4;
+		steerAngle += 0.0001 *dt * (1.f - abs(steerAngle)/maxSteerAngle);
+		if(steerAngle > maxSteerAngle)
+			steerAngle = maxSteerAngle;
 	}
 	if(steeringLeft)
 	{
-		steerAngle -= 0.01 *dt;
-		if(steerAngle < -M_PI_4)
-			steerAngle = -M_PI_4;
+		steerAngle -= 0.0001 *dt * (1.f - abs(steerAngle)/maxSteerAngle);
+		if(steerAngle < -maxSteerAngle)
+			steerAngle = -maxSteerAngle;
 	}
 	if(!steeringRight && !steeringLeft)
 	{
 		if(steerAngle > 0.f)
-			steerAngle -= 0.01 *dt;
+			steerAngle -= 0.0001 *dt;
 		else if(steerAngle < 0.f)
-			steerAngle += 0.01 *dt;
+			steerAngle += 0.0001 *dt;
 
-		if(steerAngle > -0.1f && steerAngle < 0.1f)
+		if(steerAngle > -0.001 && steerAngle < 0.001f)
 			steerAngle = 0.f;
 	}
 	//force = 0.f;

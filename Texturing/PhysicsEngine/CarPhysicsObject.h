@@ -13,6 +13,7 @@ class CarPhysicsObject : public PhysicsObject
 	const float engineForce;
 	const float breakForce;
 	const float maxCarSpeed;
+	const float maxSteerAngle;
 	float carSpeed;
 	float wheelBase;
 	float carHeading;

@@ -15,16 +15,23 @@ Renderer::~Renderer()
 
 void Renderer::Initialize()
 {
-	//myCamera = std::unique_ptr<FPCamera>(new FPCamera());
-	myCamera = std::unique_ptr<EulerCamera>(new EulerCamera());
-
+	freeCam = new FirstPersonCamera();
+	carCam1 = new ThirdPersonCamera(glm::vec3(0.f), 20.f, 8.f);
+	carCam2 = new ThirdPersonCamera(glm::vec3(0.f), 7.f, .1f);
+	cams.push(carCam1);
+	cams.push(carCam2);
+	cams.push(freeCam);
+	currentCam = cams.front();
 	// Projection matrix : 
-	myCamera->SetPerspectiveProjection(45.0f,4.0f/3.0f,0.1f,100000.0f);
+	freeCam->SetPerspectiveProjection(45.0f,4.0f/3.0f,0.1f,100000.0f);
+	carCam1->SetPerspectiveProjection(45.0f,4.0f/3.0f,0.1f,100000.0f);
+	carCam2->SetPerspectiveProjection(45.0f,4.0f/3.0f,0.1f,100000.0f);
 
+	objectPosition = glm::vec3(0, 0, 0);
 	// View matrix : 
-	myCamera->Reset(0.0,0.0,5.0,
-		0,0,0,
-		0,1,0);
+	freeCam->Reset(glm::vec3(0.0, 100.0, 0.0),
+		objectPosition,
+		glm::vec3(0, 1, 0));
 	//////////////////////////////////////////////////////////////////////////
 	noLightModelShader = new NonLightingModelShaderProgram();
 	noLightModelShader->Initialize();
@@ -41,14 +48,11 @@ void Renderer::Initialize()
 
 	spider.LoadFromFile("data\\models\\Spider\\spider.obj");
 	spider.Initialize();
-	
-	//spiderGameObject.physicsObject.addForce(glm::vec3(0,-98,0));
-	//spiderPhysicsObject.SetPosition(glm::vec3(0, 300, -50));
 	spiderPhysicsObject.SetMass(0.000001f);
 	physicsWorld.physicsObjects.push_back(&(spiderPhysicsObject));
 	
 	spiderGameObject = new GenericGameObject(&spider, &spiderPhysicsObject);
-	
+	spiderModel = glm::scale(0.01f, 0.01f, 0.01f);
 
 	wheel.LoadFromFile("data\\models\\Wheel\\cart_wheel.3ds");
 	wheel.Initialize();
@@ -70,7 +74,7 @@ void Renderer::Initialize()
 
 void Renderer::Draw()
 {
-	glm::mat4 VP = myCamera->GetProjectionMatrix() * myCamera->GetViewMatrix();
+	glm::mat4 VP = currentCam->GetProjectionMatrix() * currentCam->GetViewMatrix();
 
 
 	lightModelShader->UseProgram();
@@ -103,41 +107,46 @@ void Renderer::Cleanup()
 void Renderer::Update(double deltaTime, InputManager* inputManager)
 {
 	int c = 0;
-	//spiderModel = glm::translate(-0.0002f * (float)deltaTime, 0.f, 0.f) * spiderModel;
 	spiderGameObject->Update(deltaTime);
 	jeepGameObject->Update(deltaTime);
-	//spiderGameObject.physicsObject.Update(deltaTime);
 	physicsWorld.Update(deltaTime);
 	HandleKeyboardInput(inputManager);
 	HandleMouse(inputManager->GetMouseX(), inputManager->GetMouseY());
-	myCamera->UpdateViewMatrix();
+
+	carCam1->setObjectPosition(jeepGameObject->GetPosition() + glm::vec3(0.f, 10.f, 0.f));
+	carCam1->setYawAngle(-(jeepGameObject->GetHeadingAngle() + 3.14f/2.f));
+
+	carCam2->setObjectPosition(jeepGameObject->GetPosition() + glm::vec3(0.f, 7.f, 0.f));
+	carCam2->setYawAngle(-(jeepGameObject->GetHeadingAngle() + 3.14f/2.f));
+
+	currentCam->UpdateViewMatrix();
 }
 
 void Renderer::HandleKeyboardInput(InputManager* inputManager)
 {
 	if(inputManager->IsKeyPressed(GLFW_KEY_UP))
 	{
-		myCamera->Walk(.5);
+		freeCam->Walk(1.0);
 	}
 	if(inputManager->IsKeyPressed(GLFW_KEY_DOWN))
 	{
-		myCamera->Walk(-0.5);
+		freeCam->Walk(-1.0);
 	}
 	if(inputManager->IsKeyPressed(GLFW_KEY_RIGHT))
 	{
-		myCamera->Strafe(0.5);
+		freeCam->Strafe(1.0);
 	}
 	if(inputManager->IsKeyPressed(GLFW_KEY_LEFT))
 	{
-		myCamera->Strafe(-0.5);
+		freeCam->Strafe(-1.0);
 	}
 	if(inputManager->IsKeyPressed(GLFW_KEY_SPACE) || inputManager->IsKeyPressed(GLFW_MOUSE_BUTTON_LEFT))
 	{
-		myCamera->Fly(5);
+		freeCam->Fly(1.0);
 	}
 	if(inputManager->IsKeyPressed(GLFW_MOUSE_BUTTON_RIGHT))
 	{
-		myCamera->Fly(-0.5);
+		freeCam->Fly(-1.0);
 	}
 	if(inputManager->IsKeyPressed(GLFW_KEY_W)){
 		jeepGameObject->Throttle();
@@ -147,16 +156,23 @@ void Renderer::HandleKeyboardInput(InputManager* inputManager)
 	}
 	if(inputManager->IsKeyPressed(GLFW_KEY_D)){
 		jeepGameObject->SteerRight();
+		printf("CarHeading: %.3f\n", jeepGameObject->GetHeadingAngle());
 	}
 	if(inputManager->IsKeyPressed(GLFW_KEY_A)){
 		jeepGameObject->SteerLeft();
+		printf("CarHeading: %.3f\n", jeepGameObject->GetHeadingAngle());
+	}
+	if(inputManager->IsKeyPressed(GLFW_KEY_C)){
+		Camera* prevCam = cams.front();
+		cams.pop();
+		cams.push(prevCam);
+		currentCam = cams.front();
 	}
 }
 
 void Renderer::HandleMouse(double deltaX,double deltaY)
 {
-	/*if(deltaX !=0 || deltaY !=0)
-		printf("Renderer::MOUSE = %f , %f \n",deltaX,deltaY);*/
-	myCamera->Yaw(deltaX);
-	myCamera->Pitch(deltaY);
+	if (deltaX == 0 && deltaY == 0) return;
+	freeCam->Yaw(deltaX);
+	freeCam->Pitch(deltaY);
 }

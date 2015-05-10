@@ -26,6 +26,7 @@ public:
 	inline PhysicsObject* GetPhysicsObject() { return &physicsObject; }
 	inline glm::vec3 GetPosition() {return physicsObject.GetPosition(); }
 	inline float GetSteerAngle() { return physicsObject.GetSteerAngle(); };
+	inline float GetHeadingAngle() { return physicsObject.GetCarHeading(); };
 	inline Model* GetModel() { return model; }
 
 	void SetPosition(glm::vec3 position);

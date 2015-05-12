@@ -2,10 +2,10 @@
 
 #include <glm/gtc/matrix_transform.hpp> 
 #include <glm/gtx/transform.hpp>
-	camSwitch = 0;
+
 Renderer::Renderer()
 {
-
+	camSwitch = 0;
 }
 
 Renderer::~Renderer()

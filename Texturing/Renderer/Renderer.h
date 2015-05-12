@@ -12,6 +12,7 @@
 #include "Shaders/shader.hpp"
 #include "Texture/texture.h"
 #include "Model/Model.h"
+#include "Model/ModelNode.h"
 #include "ShaderProgram\NonLightingModelShaderProgram.h"
 #include "ShaderProgram\LightingModelShaderProgram.h"
 #include "Lighting\DirectionalLightSource.h"
@@ -27,32 +28,36 @@
 #include "PhysicsEngine\CarPhysicsObject.h"
 #include "PhysicsEngine\PhysicsObject.h"
 
+#include "Game\Level\Level.h"
+
 class Renderer
 {
 	NonLightingModelShaderProgram* noLightModelShader;
 	LightingModelShaderProgram* lightModelShader;
 
+	int camSwitch;
 	std::queue<Camera*> cams;
 	Camera* currentCam;
 	FirstPersonCamera* freeCam;
 	ThirdPersonCamera* carCam1;
 	ThirdPersonCamera* carCam2;
-	glm::vec3 objectPosition;
-	Model house;
-	Model spider;
-	Model wheel;
+
+	Model crate1;
+	Model crate2;
 	Model jeep;
-	Model track;
 
 	Skybox skybox;
 
 	PhysicsWorld physicsWorld;
 
-	GenericGameObject* spiderGameObject;
+	GenericGameObject* crate1GameObject;
+	RigidBody crate1PhysicsObject;
+	GenericGameObject* crate2GameObject;
+	RigidBody crate2PhysicsObject;
+	
 	CarGameObject* jeepGameObject;
-	RigidBody spiderPhysicsObject;
 
-	glm::mat4 spiderModel;
+	Level level1;
 public:
     Renderer();
     ~Renderer();

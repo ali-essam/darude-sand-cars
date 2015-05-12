@@ -10,6 +10,7 @@ RigidBody::~RigidBody()
 
 void RigidBody::Update(float dt)
 {
+	if(mass == 0.f) return;
 	glm::vec3 acc = force / mass;
 	velocity += acc * dt;
 	// printf("v = %f %f %f\n",velocity[0], velocity[1], velocity[2]); 

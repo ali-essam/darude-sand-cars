@@ -89,6 +89,7 @@
     <ClCompile Include="Camera\Camera.cpp" />
     <ClCompile Include="Camera\FirstPersonCamera\FirstPersonCamera.cpp" />
     <ClCompile Include="Camera\ThirdPersonCamera\ThirdPersonCamera.cpp" />
+    <ClCompile Include="Game\Level\Level.cpp" />
     <ClCompile Include="InputManager\InputManager.cpp" />
     <ClCompile Include="Lighting\DirectionalLightSource.cpp" />
     <ClCompile Include="main.cpp" />
@@ -117,6 +118,7 @@
     <ClInclude Include="Camera\Camera.h" />
     <ClInclude Include="Camera\FirstPersonCamera\FirstPersonCamera.h" />
     <ClInclude Include="Camera\ThirdPersonCamera\ThirdPersonCamera.h" />
+    <ClInclude Include="Game\Level\Level.h" />
     <ClInclude Include="InputManager\InputManager.h" />
     <ClInclude Include="Lighting\DirectionalLightSource.h" />
     <ClInclude Include="Model\Model.h" />

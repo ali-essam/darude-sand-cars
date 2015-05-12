@@ -18,10 +18,12 @@ public:
 	std::vector<ModelNode*> children;
 	std::vector<ModelMesh*> meshes;
 	glm::mat4 transforms;
+	glm::mat4 animationTransforms;
 
 	ModelNode();
 	~ModelNode();
 
+	void SetAnimationTransforms(glm::mat4 transforms);
 	void Render(ModelShaderProgram* modelShader, glm::mat4 parentTransforms);
 	ModelNode* FindNode(std::string name);
 };

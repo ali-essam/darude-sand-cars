@@ -6,6 +6,7 @@
 #include "PhysicsEngine\CarPhysicsObject.h"
 #include "PhysicsEngine\AABoundingBox.h"
 #include "Model\Model.h"
+#include "Model\ModelNode.h"
 #include "ShaderProgram\ModelShaderProgram.h"
 
 
@@ -16,9 +17,11 @@ protected:
 	AABoundingBox boundingBox;
 	CarPhysicsObject physicsObject;
 	Model* model;
+	ModelNode* leftWheelNode;
+	ModelNode* rightWheelNode;
 	glm::mat4 modelMatrix;
 public:
-	CarGameObject(Model* model);
+	CarGameObject(Model* model, std::string leftWheelNodeName, std::string rightWheelNodeName);
 	~CarGameObject();
 
 

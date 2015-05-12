@@ -1,7 +1,7 @@
 #include "ModelNode.h"
 
 
-ModelNode::ModelNode(void)
+ModelNode::ModelNode():animationTransforms(glm::mat4(1.f))
 {
 }
 
@@ -12,8 +12,7 @@ ModelNode::~ModelNode(void)
 
 void ModelNode::Render(ModelShaderProgram* modelShader, glm::mat4 parentTransforms)
 {
-	glm::mat4 curTransform = parentTransforms * this->transforms;
-	//glm::mat4 curTransform = parentTransforms;
+	glm::mat4 curTransform = parentTransforms * this->transforms * animationTransforms;
 	modelShader->BindModelMatrix(&curTransform[0][0]);
 	for (int i = 0; i < meshes.size(); i++)
 	{
@@ -27,7 +26,6 @@ void ModelNode::Render(ModelShaderProgram* modelShader, glm::mat4 parentTransfor
 
 ModelNode* ModelNode::FindNode(std::string name)
 {
-	// Not Tested.
 	if(this->name == name)
 		return this;
 	ModelNode* node = 0;
@@ -37,4 +35,9 @@ ModelNode* ModelNode::FindNode(std::string name)
 			return node;
 	}
 	return node;
+}
+
+void ModelNode::SetAnimationTransforms(glm::mat4 transforms)
+{
+	this->animationTransforms = transforms;
 }

@@ -31,12 +31,14 @@ void CarPhysicsObject::Update(float dt)
 
 	if(steeringRight)
 	{
+		if(steerAngle < 0.f) steerAngle = 0.f;
 		steerAngle += 0.0001 *dt * (1.f - abs(steerAngle)/maxSteerAngle);
 		if(steerAngle > maxSteerAngle)
 			steerAngle = maxSteerAngle;
 	}
 	if(steeringLeft)
 	{
+		if(steerAngle > 0.f) steerAngle = 0.f;
 		steerAngle -= 0.0001 *dt * (1.f - abs(steerAngle)/maxSteerAngle);
 		if(steerAngle < -maxSteerAngle)
 			steerAngle = -maxSteerAngle;
@@ -78,7 +80,7 @@ void CarPhysicsObject::Update(float dt)
 	carLocation = (frontWheel + backWheel) / 2.f;
 	carHeading = atan2( frontWheel.y - backWheel.y , frontWheel.x - backWheel.x );
 	//printf("CarHeading: %.3f\n", carHeading);
-	position = glm::vec3(carLocation.x, position.y, carLocation.y);
+	position = glm::vec3(carLocation.x, 0.f, carLocation.y);
 
 	velocity = carSpeed * glm::normalize(glm::vec3(cos(carHeading), 0.f, sin(carHeading)));
 

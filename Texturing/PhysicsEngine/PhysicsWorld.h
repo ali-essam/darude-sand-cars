@@ -6,7 +6,7 @@
 
 class PhysicsWorld
 {
-
+	glm::vec3 GetVecDir(glm::vec3 v);
 public:
 	std::vector<PhysicsObject*> physicsObjects;
 	

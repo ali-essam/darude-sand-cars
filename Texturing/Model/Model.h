@@ -40,6 +40,7 @@ public:
 	void Cleanup();
 
 	std::vector<glm::vec3> GetAllVerticies();
+	ModelNode* FindNode(std::string name);
 };
 #endif // Model_h__
 

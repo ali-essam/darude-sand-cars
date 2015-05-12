@@ -182,3 +182,8 @@ std::vector<glm::vec3> Model::GetAllVerticies()
 	}
 	return verts;
 }
+
+ModelNode* Model::FindNode(std::string name)
+{
+	return rootNode->FindNode(name);
+}

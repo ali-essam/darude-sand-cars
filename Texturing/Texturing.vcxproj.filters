@@ -51,7 +51,7 @@
     </Filter>
     <Filter Include="GLSLShaders">
       <UniqueIdentifier>{c6132f40-d20d-4584-90d1-2b40d342b324}</UniqueIdentifier>
-	</Filter>
+    </Filter>
     <Filter Include="Camera">
       <UniqueIdentifier>{d72947b6-520f-43fe-8308-f2c41770667f}</UniqueIdentifier>
     </Filter>
@@ -60,6 +60,9 @@
     </Filter>
     <Filter Include="Camera\ThirdPersonCamera">
       <UniqueIdentifier>{db7cd2cf-6056-4e64-bf31-d53ade3c541d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Level">
+      <UniqueIdentifier>{eb7a1c95-bfda-423f-b28f-39fc6bfd9d00}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -131,7 +134,7 @@
     </ClCompile>
     <ClCompile Include="Lighting\DirectionalLightSource.cpp">
       <Filter>Lighting</Filter>
-	</ClCompile>
+    </ClCompile>
     <ClCompile Include="Camera\FirstPersonCamera\FirstPersonCamera.cpp">
       <Filter>Camera\FirstPersonCamera</Filter>
     </ClCompile>
@@ -140,6 +143,9 @@
     </ClCompile>
     <ClCompile Include="Camera\ThirdPersonCamera\ThirdPersonCamera.cpp">
       <Filter>Camera\ThirdPersonCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Level\Level.cpp">
+      <Filter>Game\Level</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -208,7 +214,7 @@
     </ClInclude>
     <ClInclude Include="Lighting\DirectionalLightSource.h">
       <Filter>Lighting</Filter>
-	</ClInclude>
+    </ClInclude>
     <ClInclude Include="Camera\FirstPersonCamera\FirstPersonCamera.h">
       <Filter>Camera\FirstPersonCamera</Filter>
     </ClInclude>
@@ -217,6 +223,9 @@
     </ClInclude>
     <ClInclude Include="Camera\ThirdPersonCamera\ThirdPersonCamera.h">
       <Filter>Camera\ThirdPersonCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Level\Level.h">
+      <Filter>Game\Level</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
